@@ -17,8 +17,8 @@ class Engine {
 		void update();
 		void render();
 		void clean();
-		inline bool isRunning() {return running;}
-		inline SDL_Renderer* getRenderer() {return renderer;}
+		bool isRunning() {return running;}
+		SDL_Renderer* getRenderer() {return renderer;}
 		
 	private:
 		bool running;

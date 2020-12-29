@@ -30,7 +30,7 @@ void TextureManager::drop(std::string id) {
 }
 
 void TextureManager::clean() {
-  for (auto &it : textureMap) {
+  for (auto& it : textureMap) {
     SDL_DestroyTexture(it.second);
   }
   textureMap.clear();
