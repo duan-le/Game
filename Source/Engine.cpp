@@ -1,6 +1,7 @@
 #include "Engine.h"
 
 Engine* Engine::instance = nullptr;
+Character* adventurer = nullptr;
 
 Engine::Engine() {}
 Engine::~Engine() {}
@@ -22,7 +23,8 @@ void Engine::init() {
 		running = true;
   }
 
-  TextureManager::getInstance()->load("adventurer", "Assets/adventurer_idle1.png");
+  TextureManager::getInstance()->load("adventurer", "Assets/adventurer_idle2.png");
+  adventurer = new Character("adventurer", 100, 100, 50, 37);
 }
 
 void Engine::events() {
@@ -41,13 +43,13 @@ void Engine::events() {
 }
 
 void Engine::update() {
-
+  adventurer->update();
 }
 
 void Engine::render() {
   SDL_SetRenderDrawColor(renderer, 197, 239, 247, 1);
   SDL_RenderClear(renderer);
-  TextureManager::getInstance()->draw("adventurer", 0, 0, 50, 37);
+  adventurer->draw();
   SDL_RenderPresent(renderer);
 }
 

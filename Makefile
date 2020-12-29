@@ -16,7 +16,7 @@ C_FLAGS = -Wall -g $(INCLUDES)
 L_FLAGS = -lSDL2main -lSDL2 -lSDL2_image
 
 #EXECUTABLE specifies the name of our exectuable
-EXECUTABLE = Build/run
+EXECUTABLE = Build/game
 
 #This is the target that compiles our executable
 all : $(SOURCES)

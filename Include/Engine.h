@@ -3,6 +3,7 @@
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
 #include "TextureManager.h"
+#include "Character.h"
 #include <iostream>
 
 class Engine {
