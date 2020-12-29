@@ -21,6 +21,8 @@ void Engine::init() {
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		running = true;
   }
+
+  TextureManager::getInstance()->load("soldier", "Assets/player.png");
 }
 
 void Engine::events() {
@@ -45,10 +47,12 @@ void Engine::update() {
 void Engine::render() {
   SDL_SetRenderDrawColor(renderer, 197, 239, 247, 1);
   SDL_RenderClear(renderer);
+  TextureManager::getInstance()->draw("soldier", 0, 0, 32, 32);
   SDL_RenderPresent(renderer);
 }
 
 void Engine::clean() {
+  TextureManager::getInstance()->clean();
   SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();

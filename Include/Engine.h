@@ -2,14 +2,12 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "TextureManager.h"
 #include <iostream>
 
 const int WIDTH = 800;
 const int HEIGHT = 600;
 
-/**
- * Singleton class
- */
 class Engine {
 	public:
 		~Engine();
@@ -20,7 +18,7 @@ class Engine {
 		void render();
 		void clean();
 		inline bool isRunning() {return running;}
-		
+		inline SDL_Renderer* getRenderer() {return renderer;}
 		
 	private:
 		bool running;
