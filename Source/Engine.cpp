@@ -17,12 +17,12 @@ void Engine::init() {
   if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
     std::cout << "Failed to initialize SDL: " << SDL_GetError() << std::endl;
   } else {
-    window = SDL_CreateWindow("My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WIDTH, HEIGHT, 0);
+    window = SDL_CreateWindow("My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		running = true;
   }
 
-  TextureManager::getInstance()->load("soldier", "Assets/player.png");
+  TextureManager::getInstance()->load("adventurer", "Assets/adventurer_idle1.png");
 }
 
 void Engine::events() {
@@ -47,7 +47,7 @@ void Engine::update() {
 void Engine::render() {
   SDL_SetRenderDrawColor(renderer, 197, 239, 247, 1);
   SDL_RenderClear(renderer);
-  TextureManager::getInstance()->draw("soldier", 0, 0, 32, 32);
+  TextureManager::getInstance()->draw("adventurer", 0, 0, 50, 37);
   SDL_RenderPresent(renderer);
 }
 

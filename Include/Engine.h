@@ -5,9 +5,6 @@
 #include "TextureManager.h"
 #include <iostream>
 
-const int WIDTH = 800;
-const int HEIGHT = 600;
-
 class Engine {
 	public:
 		~Engine();
