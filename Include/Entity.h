@@ -1,8 +1,6 @@
 #pragma once
 
-#include "Entity.h"
-
-class GameObject : public Entity {
+class Entity {
   public:
     virtual void update() = 0;
     virtual void draw() = 0;
