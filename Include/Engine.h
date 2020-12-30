@@ -11,6 +11,7 @@ class Engine {
 		void update();
 		void render();
 		void clean();
+		void quit();
 		bool isRunning();
 		SDL_Renderer* getRenderer();
 		

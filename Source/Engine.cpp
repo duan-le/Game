@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "Input.h"
 #include "TextureManager.h"
 #include "Character.h"
 #include <iostream>
@@ -30,18 +31,7 @@ void Engine::init() {
 }
 
 void Engine::events() {
-  SDL_Event event;
-	SDL_PollEvent(&event);
-
-	switch (event.type)
-	{
-		case SDL_QUIT:
-			running = false;
-			break;
-    
-    default:
-      break;
-  }
+  Input::getInstance()->listen();
 }
 
 void Engine::update() {
@@ -60,6 +50,10 @@ void Engine::clean() {
   SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
+}
+
+void Engine::quit() {
+  running = false;
 }
 
 bool Engine::isRunning() {
