@@ -14,11 +14,3 @@ Vector Vector::operator-(const Vector& rhs) {
 Vector Vector::operator*(const float& rhs) {
   return Vector(x * rhs, y * rhs);
 }
-
-float Vector::getX() {
-  return x;
-}
-
-float Vector::getY() {
-  return y;
-}

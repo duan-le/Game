@@ -6,9 +6,5 @@ class Vector {
     Vector operator+(const Vector& rhs);
     Vector operator-(const Vector& rhs);
     Vector operator*(const float& rhs);
-    float getX();
-    float getY();
-
-  private:
     float x, y;
 };
