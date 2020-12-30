@@ -1,20 +1,20 @@
 #include "Character.h"
 
-Character::Character(std::string textureID, int x, int y, int w, int h, SDL_RendererFlip flip) :
-  GameObject(textureID, x, y, w, h, flip) {
-    a = new Animation(textureID, 0, 4, 200, flip);
+Character::Character(std::string textureID, int x, int y, int w, int h, int scale, SDL_RendererFlip flip) :
+  GameObject(textureID, x, y, w, h, scale, flip) {
+    animation = new Animation(textureID, 0, 4, 200);
 }
 
 Character::~Character() {
-  delete a;
+  delete animation;
 }
 
 void Character::update() {
-  a->update();
+  animation->update();
 }
 
 void Character::draw() {
-  a->draw(t->getX(), t->getY(), w, h);
+  animation->draw(transform->getX(), transform->getY(), w, h, scale, flip);
 }
 
 void Character::clean() {

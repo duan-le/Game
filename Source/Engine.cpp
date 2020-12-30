@@ -26,7 +26,7 @@ void Engine::init() {
   }
 
   TextureManager::getInstance()->load("adventurer", "Assets/adventurer_idle2.png");
-  adventurer = new Character("adventurer", 100, 100, 50, 37);
+  adventurer = new Character("adventurer", 200, 200, 50, 37, 4);
 }
 
 void Engine::events() {

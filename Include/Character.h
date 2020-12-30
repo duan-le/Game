@@ -7,7 +7,7 @@
 
 class Character : public GameObject {
   public:
-    Character(std::string textureID, int x, int y, int w, int h, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    Character(std::string textureID, int x, int y, int w, int h, int scale = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
     ~Character();
     virtual void update();
     virtual void draw();
@@ -15,5 +15,5 @@ class Character : public GameObject {
   
   private:
     std::string name;
-    Animation* a;
+    Animation* animation;
 };
