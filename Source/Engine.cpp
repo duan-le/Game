@@ -1,4 +1,5 @@
 #include "Engine.h"
+#include "Clock.h"
 #include "Input.h"
 #include "TextureManager.h"
 #include "Character.h"
@@ -36,7 +37,9 @@ void Engine::events() {
 }
 
 void Engine::update() {
-  adventurer->update(0);
+  // float dt = Clock::getInstance()->getDeltaTime();
+  // std::cout << dt << std::endl;
+  adventurer->update(Clock::getInstance()->getDeltaTime());
 }
 
 void Engine::render() {

@@ -5,7 +5,7 @@ Character::Character(std::string textureID, int x, int y, int w, int h, int scal
   GameObject(textureID, x, y, w, h, scale, flip) {
     animation = new Animation();
     animation->setProperties(textureID, 0, 4, 200);
-    rigidBody = new RigidBody();
+    rigidBody = new RigidBody(50);
 }
 
 Character::~Character() {
@@ -30,7 +30,7 @@ void Character::update(float dt) {
     flip = SDL_FLIP_NONE;
   }
 
-  rigidBody->update(0.1);
+  rigidBody->update(dt);
   transform->translateX(rigidBody->getPosition().x);
   animation->update();
 }
