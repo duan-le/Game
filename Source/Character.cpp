@@ -2,19 +2,17 @@
 
 Character::Character(std::string textureID, int x, int y, int w, int h, SDL_RendererFlip flip) :
   GameObject(textureID, x, y, w, h, flip) {
-    row = 0;
-    frameCount = 4;
-    animationSpeed = 120;
+    a = new Animation(textureID, 0, 4, 200, flip);
 }
 
 void Character::update() {
-  frame = (SDL_GetTicks() / animationSpeed) % frameCount;
+  a->update();
 }
 
 void Character::draw() {
-  TextureManager::getInstance()->drawFrame(textureID, t->getX(), t->getY(), w, h, row, frame);
+  a->draw(t->getX(), t->getY(), w, h);
 }
 
 void Character::clean() {
-  TextureManager::getInstance()->clean();
+  
 }
