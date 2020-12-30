@@ -1,4 +1,5 @@
 #include "Character.h"
+#include "Input.h"
 
 Character::Character(std::string textureID, int x, int y, int w, int h, int scale, SDL_RendererFlip flip) :
   GameObject(textureID, x, y, w, h, scale, flip) {
@@ -12,8 +13,27 @@ Character::~Character() {
 }
 
 void Character::update(float dt) {
+  
+  delete animation;
+  rigidBody->setForceX(0);
+  animation = new Animation("adventurer_idle2", 0, 4, 200);
+  
+  if (Input::getInstance()->getKeyDown(SDL_SCANCODE_LEFT)) {
+    rigidBody->setForceX(-10);
+    delete animation;
+    animation = new Animation("adventurer_run", 0, 6, 100);
+    flip = SDL_FLIP_HORIZONTAL;
+  }
+
+  if (Input::getInstance()->getKeyDown(SDL_SCANCODE_RIGHT)) {
+    rigidBody->setForceX(10);
+    delete animation;
+    animation = new Animation("adventurer_run", 0, 6, 100);
+    flip = SDL_FLIP_NONE;
+  }
+
   rigidBody->update(0.1);
-  transform->translate(rigidBody->getPosition());
+  transform->translateX(rigidBody->getPosition().x);
   animation->update();
 }
 
