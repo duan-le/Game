@@ -7,11 +7,8 @@
 
 class GameObject : public Entity {
   public:
-    GameObject(std::string textureID, int x, int y, int w, int h, SDL_RendererFlip flip = SDL_FLIP_NONE) :
-      textureID(textureID), w(w), h(h), flip(flip) {
-        t = new Transform(x, y);
-    }
-    virtual ~GameObject() {delete t;}
+    GameObject(std::string textureID, int x, int y, int w, int h, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    virtual ~GameObject();
     virtual void update() = 0;
     virtual void draw() = 0;
     virtual void clean() = 0;

@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Engine.h"
+#include "SDL2/SDL.h"
 #include <map>
 
 class TextureManager {
   public:
-    ~TextureManager();
     static TextureManager* getInstance();
     void load(std::string id, std::string filepath);
     void draw(std::string id, int x, int y, int w, int h, SDL_RendererFlip flip = SDL_FLIP_NONE);

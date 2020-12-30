@@ -1,9 +1,9 @@
 #include "TextureManager.h"
+#include "Engine.h"
 
 TextureManager* TextureManager::instance = nullptr;
 
 TextureManager::TextureManager() {}
-TextureManager::~TextureManager() {}
 
 TextureManager* TextureManager::getInstance() {
   if (instance != nullptr) {

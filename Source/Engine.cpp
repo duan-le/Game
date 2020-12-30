@@ -1,10 +1,12 @@
 #include "Engine.h"
+#include "TextureManager.h"
+#include "Character.h"
+#include <iostream>
 
 Engine* Engine::instance = nullptr;
 Character* adventurer = nullptr;
 
 Engine::Engine() {}
-Engine::~Engine() {}
 
 Engine* Engine::getInstance() {
   if (instance != nullptr) {
@@ -58,4 +60,12 @@ void Engine::clean() {
   SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
+}
+
+bool Engine::isRunning() {
+  return running;
+}
+
+SDL_Renderer* Engine::getRenderer() {
+  return renderer;
 }

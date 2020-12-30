@@ -5,6 +5,10 @@ Character::Character(std::string textureID, int x, int y, int w, int h, SDL_Rend
     a = new Animation(textureID, 0, 4, 200, flip);
 }
 
+Character::~Character() {
+  delete a;
+}
+
 void Character::update() {
   a->update();
 }
