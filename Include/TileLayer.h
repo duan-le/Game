@@ -8,7 +8,7 @@ struct TileSet {
   int firstID, lastID;
   int rowCount, colCount;
   int tileCount, tileSize;
-  std::string name, filepath;
+  std::string name, source;
 };
 
 class TileLayer : public Layer {

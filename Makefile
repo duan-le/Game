@@ -1,8 +1,8 @@
 #SOURCES specifies which files to compile as part of the project
-SOURCES = Source/*.cpp
+SOURCES = Source/*.cpp Libraries/TinyXML/*.cpp
 
 #INCLUDES specifies which directory to find header files
-INCLUDES = -I Include
+INCLUDES = -I Include -I Libraries/*
 
 #CC specifies which compiler we're using
 CC = g++
