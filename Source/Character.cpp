@@ -5,7 +5,7 @@ Character::Character(std::string textureID, int x, int y, int w, int h, int scal
   GameObject(textureID, x, y, w, h, scale, flip) {
     animation = new Animation();
     animation->setProperties(textureID, 0, 4, 200);
-    rigidBody = new RigidBody(50);
+    rigidBody = new RigidBody();
 }
 
 Character::~Character() {
@@ -19,13 +19,13 @@ void Character::update(float dt) {
   animation->setProperties("adventurer_idle2", 0, 4, 200);
   
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_LEFT)) {
-    rigidBody->setForceX(-10);
+    rigidBody->setForceX(-5);
     animation->setProperties("adventurer_run", 0, 6, 100);
     flip = SDL_FLIP_HORIZONTAL;
   }
 
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_RIGHT)) {
-    rigidBody->setForceX(10);
+    rigidBody->setForceX(5);
     animation->setProperties("adventurer_run", 0, 6, 100);
     flip = SDL_FLIP_NONE;
   }
