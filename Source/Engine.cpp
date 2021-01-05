@@ -1,5 +1,4 @@
 #include "Engine.h"
-#include "Clock.h"
 #include "Input.h"
 #include "TextureManager.h"
 #include "Character.h"
@@ -23,7 +22,7 @@ void Engine::init() {
     std::cout << "Failed to initialize SDL: " << SDL_GetError() << std::endl;
   } else {
     window = SDL_CreateWindow("My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
-		renderer = SDL_CreateRenderer(window, -1, 0);
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 		running = true;
   }
 
@@ -37,9 +36,7 @@ void Engine::events() {
 }
 
 void Engine::update() {
-  // float dt = Clock::getInstance()->getDeltaTime();
-  // std::cout << dt << std::endl;
-  adventurer->update(Clock::getInstance()->getDeltaTime());
+  adventurer->update(1.5);
 }
 
 void Engine::render() {
