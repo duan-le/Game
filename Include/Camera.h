@@ -5,6 +5,8 @@
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 640
+#define LEVEL_WIDTH 1920
+#define LEVEL_HEIGHT 640
 
 class Camera {
   public:

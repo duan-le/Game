@@ -32,7 +32,7 @@ void Engine::init() {
   currentMap = MapParser::getInstance()->getMap("map1");
   TextureManager::getInstance()->load("adventurer_idle2", "Assets/adventurer_idle2.png");
   TextureManager::getInstance()->load("adventurer_run", "Assets/adventurer_run.png");
-  adventurer = new Character("adventurer_idle2", 0, 400, 50, 37, 1);
+  adventurer = new Character("adventurer_idle2", 0, 400, 50, 37, 2);
   Camera::getInstance()->setTarget(adventurer->getOrigin());
 }
 

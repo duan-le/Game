@@ -3,7 +3,7 @@
 Camera* Camera::instance = nullptr;
 
 Camera::Camera() :
-  viewBox({0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}) {}
+  position({0, 0}), viewBox({0, 0, WINDOW_WIDTH, WINDOW_HEIGHT}) {}
 
 Camera* Camera::getInstance() {
   if (instance != nullptr) {
@@ -24,19 +24,14 @@ void Camera::update(float dt) {
   if (viewBox.y < 0) {
     viewBox.y = 0;
   }
-  if (viewBox.x > (2 * WINDOW_WIDTH - viewBox.w)) {
-    viewBox.x = (2 * WINDOW_WIDTH - viewBox.w);
+  if (viewBox.x > (LEVEL_WIDTH- viewBox.w)) {
+    viewBox.x = (LEVEL_WIDTH - viewBox.w);
   }
-  if (viewBox.y > (WINDOW_HEIGHT - viewBox.h)) {
-    viewBox.y = (WINDOW_HEIGHT - viewBox.h);
+  if (viewBox.y > (LEVEL_HEIGHT - viewBox.h)) {
+    viewBox.y = (LEVEL_HEIGHT - viewBox.h);
   }
-  // if (viewBox.x == WINDOW_WIDTH) {
-  //   viewBox.x = WINDOW_WIDTH;
-  // }
-  // if (viewBox.y == WINDOW_HEIGHT) {
-  //   viewBox.y = WINDOW_HEIGHT;
-  // }
-  position = Vector(viewBox.x, viewBox.y);
+  position.x = viewBox.x;
+  position.y = viewBox.y;
 }
 
 Vector Camera::getPosition() {
