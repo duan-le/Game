@@ -13,7 +13,7 @@ MapParser* MapParser::getInstance() {
 }
 
 void MapParser::load() {
-  parse("test_level", "Assets/map.tmx");
+  parse("map1", "Assets/map1.tmx");
 }
 
 void MapParser::clean() {

@@ -22,13 +22,13 @@ void Engine::init() {
   if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
     std::cout << "Failed to initialize SDL: " << SDL_GetError() << std::endl;
   } else {
-    window = SDL_CreateWindow("My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1920, 640, 0);
+    window = SDL_CreateWindow("My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 640, SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
 		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 		running = true;
   }
   
   MapParser::getInstance()->load();
-  currentMap = MapParser::getInstance()->getMap("test_level");
+  currentMap = MapParser::getInstance()->getMap("map1");
   TextureManager::getInstance()->load("adventurer_idle2", "Assets/adventurer_idle2.png");
   TextureManager::getInstance()->load("adventurer_run", "Assets/adventurer_run.png");
   adventurer = new Character("adventurer_idle2", 0, 472, 50, 37, 2);
