@@ -4,6 +4,9 @@
 #include "SDL2/SDL_image.h"
 #include "GameMap.h"
 
+#define WINDOW_WIDTH 800
+#define WINDOW_HEIGHT 640
+
 class Engine {
 	public:
 		static Engine* getInstance();

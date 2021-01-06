@@ -5,7 +5,7 @@ Character::Character(std::string textureID, int x, int y, int w, int h, int scal
   GameObject(textureID, x, y, w, h, scale, flip) {
     animation = new Animation();
     animation->setProperties(textureID, 0, 4, 200);
-    rigidBody = new RigidBody();
+    rigidBody = new RigidBody(1, 0);
 }
 
 Character::~Character() {
@@ -16,6 +16,7 @@ Character::~Character() {
 void Character::update(float dt) {
   
   rigidBody->setForceX(0);
+  rigidBody->setForceY(0);
   animation->setProperties("adventurer_idle2", 0, 4, 200);
   
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_LEFT)) {
@@ -30,8 +31,21 @@ void Character::update(float dt) {
     flip = SDL_FLIP_NONE;
   }
 
+  if (Input::getInstance()->getKeyDown(SDL_SCANCODE_DOWN)) {
+    rigidBody->setForceY(5);
+    animation->setProperties("adventurer_run", 0, 6, 100);
+  }
+
+  if (Input::getInstance()->getKeyDown(SDL_SCANCODE_UP)) {
+    rigidBody->setForceY(-5);
+    animation->setProperties("adventurer_run", 0, 6, 100);
+  }
+
   rigidBody->update(dt);
   transform->translateX(rigidBody->getPosition().x);
+  transform->translateY(rigidBody->getPosition().y);
+  origin->x = transform->x + w / 2;
+  origin->y = transform->y + h / 2;
   animation->update();
 }
 

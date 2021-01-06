@@ -17,7 +17,12 @@ void MapParser::load() {
 }
 
 void MapParser::clean() {
-  
+  for (auto& it : maps) {
+    // for (auto& it2 : it.second->getMapLayers()) {  
+    //   delete it2;
+    // }
+    delete it.second;
+  }
 }
 
 GameMap* MapParser::getMap(std::string id) {

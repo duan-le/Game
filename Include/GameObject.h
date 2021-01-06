@@ -3,6 +3,7 @@
 #include "SDL2/SDL.h"
 #include "Entity.h"
 #include "Transform.h"
+#include "Vector.h"
 #include <string>
 
 class GameObject : public Entity {
@@ -12,6 +13,7 @@ class GameObject : public Entity {
     virtual void update(float dt) = 0;
     virtual void draw() = 0;
     virtual void clean() = 0;
+    Vector* getOrigin();
 
   protected:
     std::string textureID;
@@ -19,4 +21,5 @@ class GameObject : public Entity {
     int scale; // Scales the sprite to be displayed by renderer
     SDL_RendererFlip flip;
     Transform* transform;
+    Vector* origin;
 };

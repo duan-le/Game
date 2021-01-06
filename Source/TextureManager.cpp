@@ -1,5 +1,7 @@
 #include "TextureManager.h"
 #include "Engine.h"
+#include "Vector.h"
+#include "Camera.h"
 
 TextureManager* TextureManager::instance = nullptr;
 
@@ -31,8 +33,9 @@ void TextureManager::drawFrame(std::string id, int x, int y, int w, int h, int r
 }
 
 void TextureManager::drawTile(std::string id, int x, int y, int tileSize, int row, int frame, int scale, SDL_RendererFlip flip) {
+  Vector camera = Camera::getInstance()->getPosition();
   SDL_Rect src = {tileSize * frame, tileSize * row, tileSize, tileSize};
-  SDL_Rect dest = {x, y, tileSize, tileSize};
+  SDL_Rect dest = {x - camera.x, y - camera.y, tileSize, tileSize};
   SDL_RenderCopyEx(Engine::getInstance()->getRenderer(), textureMap[id], &src, &dest, 0, nullptr, flip);
 }
 
