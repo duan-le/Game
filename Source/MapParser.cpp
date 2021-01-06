@@ -1,5 +1,4 @@
 #include "MapParser.h"
-#include <iostream>
 
 MapParser* MapParser::instance = nullptr;
 
