@@ -31,8 +31,8 @@ void TextureManager::drawFrame(std::string id, int x, int y, int w, int h, int r
 }
 
 void TextureManager::drawTile(std::string id, int x, int y, int tileSize, int row, int frame, int scale, SDL_RendererFlip flip) {
-  SDL_Rect src = {x, y, tileSize, tileSize};
-  SDL_Rect dest = {tileSize * frame, tileSize * (row - 0), tileSize, tileSize};
+  SDL_Rect src = {tileSize * frame, tileSize * row, tileSize, tileSize};
+  SDL_Rect dest = {x, y, tileSize, tileSize};
   SDL_RenderCopyEx(Engine::getInstance()->getRenderer(), textureMap[id], &src, &dest, 0, nullptr, flip);
 }
 
