@@ -40,7 +40,7 @@ void TileLayer::draw() {
           tileCol = tileSet.colCount - 1;
         }
 
-        TextureManager::getInstance()->drawTile(tileSet.name, j * tileSet.tileSize, i * tileSet.tileSize, tileSet.tileSize, tileRow, tileCol);
+        TextureManager::getInstance()->drawTile(tileSet.name, j * tileSet.tileSize, i * tileSet.tileSize, tileSet.tileSize, tileRow, tileCol, 2);
       }
     }
   }

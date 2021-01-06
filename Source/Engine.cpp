@@ -28,12 +28,13 @@ void Engine::init() {
 		running = true;
   }
   
-  // MapParser::getInstance()->load();
-  // currentMap = MapParser::getInstance()->getMap("map1");
+  MapParser::getInstance()->load();
+  currentMap = MapParser::getInstance()->getMap("map1");
   TextureManager::getInstance()->load("adventurer_idle", "Assets/Pixel Adventure/Main Characters/Pink Man/Idle (32x32).png");
   TextureManager::getInstance()->load("adventurer_run", "Assets/Pixel Adventure/Main Characters/Pink Man/Run (32x32).png");
   adventurer = new Character("adventurer_idle", 0, 400, 32, 32, 2);
   Camera::getInstance()->setTarget(adventurer->getOrigin());
+  TextureManager::getInstance()->load("bg", "Assets/background.png");
 }
 
 void Engine::events() {
@@ -42,15 +43,16 @@ void Engine::events() {
 
 void Engine::update() {
   float dt = 1;
-  // currentMap->update();
+  currentMap->update();
   adventurer->update(dt);
   Camera::getInstance()->update(dt);
 }
 
 void Engine::render() {
-  SDL_SetRenderDrawColor(renderer, 197, 239, 247, 1);
+  // SDL_SetRenderDrawColor(renderer, 197, 239, 247, 1);
   SDL_RenderClear(renderer);
-  // currentMap->draw();
+  TextureManager::getInstance()->draw("bg", 0, 0, 1920, 1080);
+  currentMap->draw();
   adventurer->draw();
   SDL_RenderPresent(renderer);
 }
