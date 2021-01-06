@@ -1,4 +1,5 @@
 #include "MapParser.h"
+#include <iostream>
 
 MapParser* MapParser::instance = nullptr;
 
@@ -13,19 +14,41 @@ MapParser* MapParser::getInstance() {
 }
 
 void MapParser::load() {
-  parse("test_level", "assets/map.tmx");
+  parse("test_level", "Assets/map.tmx");
 }
 
 void MapParser::clean() {
   
 }
 
-GameMap* MapParser::getMaps() {
-  
+GameMap* MapParser::getMap(std::string id) {
+  return maps[id];
 }
 
 void MapParser::parse(std::string id, std::string filepath) {
+  TiXmlDocument xml;
+  xml.LoadFile(filepath);
+  TiXmlElement* root = xml.RootElement();
+  int rowCount = 0, colCount = 0, tileSize = 0;
+  root->Attribute("width", &colCount);
+  root->Attribute("height", &rowCount);
+  root->Attribute("tilewidth", &tileSize);
 
+  std::vector<TileSet> tileSetList;
+  for (TiXmlElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
+    if (e->Value() == std::string("tileset")) {
+      tileSetList.push_back(parseTileSet(e));
+    }
+  }
+  
+  GameMap* gameMap = new GameMap();
+  for (TiXmlElement* e = root->FirstChildElement(); e != nullptr; e = e->NextSiblingElement()) {
+    if (e->Value() == std::string("layer")) {
+      gameMap->loadMapLayers(parseTileLayer(e, tileSetList, tileSize, rowCount, colCount));
+    }
+  }
+
+  maps[id] = gameMap;
 }
 
 TileSet MapParser::parseTileSet(TiXmlElement* xmlTileSet) {
@@ -55,8 +78,8 @@ TileLayer* MapParser::parseTileLayer(TiXmlElement* xmlLayer, std::vector<TileSet
   std::string id;
   std::vector<std::vector<int>> tileMap(rowCount, std::vector<int>(colCount, 0));
 
-  for (int row = 0; row = rowCount; row++) {
-    for (int col = 0; col = colCount; col++) {
+  for (int row = 0; row < rowCount; row++) {
+    for (int col = 0; col < colCount; col++) {
       std::getline(iss, id, ',');
       std::stringstream converter(id);
       converter >> tileMap[row][col];
@@ -66,5 +89,5 @@ TileLayer* MapParser::parseTileLayer(TiXmlElement* xmlLayer, std::vector<TileSet
     }
   }
 
-  return (new Tile)
+  return (new TileLayer(tileSize, rowCount, colCount, tileSetList, tileMap));
 }

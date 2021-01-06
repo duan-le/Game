@@ -2,6 +2,7 @@
 
 #include "SDL2/SDL.h"
 #include "SDL2/SDL_image.h"
+#include "GameMap.h"
 
 class Engine {
 	public:
@@ -20,5 +21,6 @@ class Engine {
 		static Engine* instance;
 		SDL_Window* window;
 		SDL_Renderer* renderer;
+		GameMap* currentMap;
 		bool running;
 };

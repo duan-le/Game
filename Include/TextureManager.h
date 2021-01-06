@@ -9,6 +9,7 @@ class TextureManager {
     void load(std::string id, std::string filepath);
     void draw(std::string id, int x, int y, int w, int h, SDL_RendererFlip flip = SDL_FLIP_NONE);
     void drawFrame(std::string id, int x, int y, int w, int h, int row, int frame, int scale = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
+    void drawTile(std::string id, int x, int y, int tileSize, int row, int frame, int scale = 1, SDL_RendererFlip flip = SDL_FLIP_NONE);
     void drop(std::string id);
     void clean();
 

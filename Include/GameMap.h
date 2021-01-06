@@ -8,6 +8,7 @@ class GameMap {
     void update();
     void draw();
     std::vector<Layer*> getMapLayers();
+    void loadMapLayers(Layer* tileLayer);
 
   private:
     std::vector<Layer*> mapLayers;

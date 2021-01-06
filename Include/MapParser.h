@@ -11,7 +11,7 @@ class MapParser {
     static MapParser* getInstance();
     void load();
     void clean();
-    GameMap* getMaps();
+    GameMap* getMap(std::string id);
 
   private:
     MapParser();

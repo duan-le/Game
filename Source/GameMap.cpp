@@ -15,3 +15,7 @@ void GameMap::draw() {
 std::vector<Layer*> GameMap::getMapLayers() {
   return mapLayers;
 }
+
+void GameMap::loadMapLayers(Layer* tileLayer) {
+  mapLayers.push_back(tileLayer);
+}

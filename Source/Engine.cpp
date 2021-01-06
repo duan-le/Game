@@ -2,6 +2,7 @@
 #include "Input.h"
 #include "TextureManager.h"
 #include "Character.h"
+#include "MapParser.h"
 #include <iostream>
 
 Engine* Engine::instance = nullptr;
@@ -25,7 +26,9 @@ void Engine::init() {
 		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
 		running = true;
   }
-
+  
+  MapParser::getInstance()->load();
+  currentMap = MapParser::getInstance()->getMap("test_level");
   TextureManager::getInstance()->load("adventurer_idle2", "Assets/adventurer_idle2.png");
   TextureManager::getInstance()->load("adventurer_run", "Assets/adventurer_run.png");
   adventurer = new Character("adventurer_idle2", 100, 100, 50, 37, 2);
@@ -36,12 +39,14 @@ void Engine::events() {
 }
 
 void Engine::update() {
+  // currentMap->update();
   adventurer->update(1);
 }
 
 void Engine::render() {
   SDL_SetRenderDrawColor(renderer, 197, 239, 247, 1);
   SDL_RenderClear(renderer);
+  currentMap->draw();
   adventurer->draw();
   SDL_RenderPresent(renderer);
 }
