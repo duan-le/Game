@@ -17,28 +17,28 @@ void Character::update(float dt) {
   
   rigidBody->setForceX(0);
   rigidBody->setForceY(0);
-  animation->setProperties("adventurer_idle2", 0, 4, 200);
+  animation->setProperties("adventurer_idle", 0, 11, 100);
   
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_LEFT)) {
     rigidBody->setForceX(-5);
-    animation->setProperties("adventurer_run", 0, 6, 100);
+    animation->setProperties("adventurer_run", 0, 12, 50);
     flip = SDL_FLIP_HORIZONTAL;
   }
 
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_RIGHT)) {
     rigidBody->setForceX(5);
-    animation->setProperties("adventurer_run", 0, 6, 100);
+    animation->setProperties("adventurer_run", 0, 12, 50);
     flip = SDL_FLIP_NONE;
   }
 
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_DOWN)) {
     rigidBody->setForceY(5);
-    animation->setProperties("adventurer_run", 0, 6, 100);
+    animation->setProperties("adventurer_run", 0, 12, 50);
   }
 
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_UP)) {
     rigidBody->setForceY(-5);
-    animation->setProperties("adventurer_run", 0, 6, 100);
+    animation->setProperties("adventurer_run", 0, 12, 50);
   }
 
   rigidBody->update(dt);
