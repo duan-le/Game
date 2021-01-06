@@ -27,8 +27,9 @@ void TextureManager::draw(std::string id, int x, int y, int w, int h, SDL_Render
 }
 
 void TextureManager::drawFrame(std::string id, int x, int y, int w, int h, int row, int frame, int scale, SDL_RendererFlip flip) {
+  Vector camera = Camera::getInstance()->getPosition();
   SDL_Rect src = {w * frame, h * row, w, h};
-  SDL_Rect dest = {x, y, w * scale, h * scale};
+  SDL_Rect dest = {x - camera.x, y - camera.y, w * scale, h * scale};
   SDL_RenderCopyEx(Engine::getInstance()->getRenderer(), textureMap[id], &src, &dest, 0, nullptr, flip);
 }
 

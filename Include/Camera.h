@@ -12,7 +12,7 @@ class Camera {
     void update(float dt);
     Vector getPosition();
     SDL_Rect getViewBox();
-    void setTarget(Vector* point);
+    void setTarget(Vector* target);
 
   private:
     Camera();

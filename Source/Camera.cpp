@@ -27,15 +27,15 @@ void Camera::update(float dt) {
   if (viewBox.x > (2 * WINDOW_WIDTH - viewBox.w)) {
     viewBox.x = (2 * WINDOW_WIDTH - viewBox.w);
   }
-  if (viewBox.y > (2 * WINDOW_HEIGHT - viewBox.h)) {
-    viewBox.y = (2 * WINDOW_HEIGHT - viewBox.h);
+  if (viewBox.y > (WINDOW_HEIGHT - viewBox.h)) {
+    viewBox.y = (WINDOW_HEIGHT - viewBox.h);
   }
-  if (viewBox.x == WINDOW_WIDTH) {
-    viewBox.x = WINDOW_WIDTH;
-  }
-  if (viewBox.y == WINDOW_HEIGHT) {
-    viewBox.y = WINDOW_HEIGHT;
-  }
+  // if (viewBox.x == WINDOW_WIDTH) {
+  //   viewBox.x = WINDOW_WIDTH;
+  // }
+  // if (viewBox.y == WINDOW_HEIGHT) {
+  //   viewBox.y = WINDOW_HEIGHT;
+  // }
   position = Vector(viewBox.x, viewBox.y);
 }
 
