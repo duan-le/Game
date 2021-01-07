@@ -21,7 +21,13 @@ void TextureManager::load(std::string id, std::string filepath) {
 }
 
 void TextureManager::draw(std::string id, int x, int y, int w, int h, SDL_RendererFlip flip) {
-  Vector camera = Camera::getInstance()->getPosition() * 0.25;
+  SDL_Rect src = {0, 0, w, h};
+  SDL_Rect dest = {x, y, w, h};
+  SDL_RenderCopyEx(Engine::getInstance()->getRenderer(), textureMap[id], &src, &dest, 0, nullptr, flip);
+}
+
+void TextureManager::drawBackground(std::string id, int x, int y, int w, int h, float scrollSpeed, SDL_RendererFlip flip) {
+  Vector camera = Camera::getInstance()->getPosition() * scrollSpeed;
   SDL_Rect src = {0, 0, w, h};
   SDL_Rect dest = {x - (int)(camera.x), y - (int)(camera.y), w, h};
   SDL_RenderCopyEx(Engine::getInstance()->getRenderer(), textureMap[id], &src, &dest, 0, nullptr, flip);

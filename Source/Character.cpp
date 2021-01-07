@@ -33,12 +33,12 @@ void Character::update(float dt) {
 
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_DOWN)) {
     rigidBody->setForceY(5);
-    animation->setProperties("adventurer_run", 0, 12, 50);
+    animation->setProperties("adventurer_fall", 0, 1, 50);
   }
 
   if (Input::getInstance()->getKeyDown(SDL_SCANCODE_UP)) {
     rigidBody->setForceY(-5);
-    animation->setProperties("adventurer_run", 0, 12, 50);
+    animation->setProperties("adventurer_jump", 0, 1, 50);
   }
 
   rigidBody->update(dt);
