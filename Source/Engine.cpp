@@ -34,7 +34,7 @@ void Engine::init() {
   TextureManager::getInstance()->load("adventurer_run", "Assets/Pixel Adventure/Main Characters/Pink Man/Run (32x32).png");
   TextureManager::getInstance()->load("adventurer_jump", "Assets/Pixel Adventure/Main Characters/Pink Man/Jump (32x32).png");
   TextureManager::getInstance()->load("adventurer_fall", "Assets/Pixel Adventure/Main Characters/Pink Man/Fall (32x32).png");
-  adventurer = new Character("adventurer_idle", 0, 400, 32, 32, 2);
+  adventurer = new Character("adventurer_idle", 32, 344, 32, 32, 2);
   Camera::getInstance()->setTarget(adventurer->getOrigin());
   TextureManager::getInstance()->load("bg2", "Assets/bg2.png");
 }
@@ -75,4 +75,8 @@ bool Engine::isRunning() {
 
 SDL_Renderer* Engine::getRenderer() {
   return renderer;
+}
+
+GameMap* Engine::getMap() {
+  return currentMap;
 }

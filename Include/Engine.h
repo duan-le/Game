@@ -18,6 +18,7 @@ class Engine {
 		void quit();
 		bool isRunning();
 		SDL_Renderer* getRenderer();
+		GameMap* getMap();
 		
 	private:
 		Engine();		

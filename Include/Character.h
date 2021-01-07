@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Animation.h"
 #include "RigidBody.h"
+#include "Collider.h"
 #include <string>
 
 class Character : public GameObject {
@@ -16,6 +17,12 @@ class Character : public GameObject {
   
   private:
     std::string name;
+    float jumpTime;
+    float jumpForce;   
+    bool isJumping;
+    bool isGrounded;
     Animation* animation;
     RigidBody* rigidBody;
+    Collider* collider;
+    Vector lastSafePosition;
 };
