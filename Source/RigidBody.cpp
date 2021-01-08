@@ -4,10 +4,14 @@ RigidBody::RigidBody(float mass, float gravity) :
   mass(mass), gravity(gravity) {}
 
 void RigidBody::update(float dt) {
-  acceleration.x = (force.x + friction.x) / mass;
+  acceleration.x = (force.x + 0) / mass; // friction.x is currently set to 0
   acceleration.y = gravity + (force.y / mass);
-  velocity = acceleration * dt;
+  velocity = acceleration * 1; // dt is currently set to 1 so that dt is proportional with position and framerate
   postion = velocity * dt;
+
+  // Make sure that dt is proportional with these values. Before it was dt * dt to find new position,
+  // that is why when the framerate is higher than targeted frame rate everything was slower.
+  // Fix both axis
 }
 
 void RigidBody::setMass(float mass) {

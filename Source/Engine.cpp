@@ -24,7 +24,7 @@ void Engine::init() {
     std::cout << "Failed to initialize SDL: " << SDL_GetError() << std::endl;
   } else {
     window = SDL_CreateWindow("My Game", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_RESIZABLE | SDL_WINDOW_ALLOW_HIGHDPI);
-		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED);
+		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 		running = true;
   }
   
@@ -43,8 +43,7 @@ void Engine::events() {
   Input::getInstance()->listen();
 }
 
-void Engine::update() {
-  float dt = 1;
+void Engine::update(float dt) {
   currentMap->update();
   adventurer->update(dt);
   Camera::getInstance()->update(dt);

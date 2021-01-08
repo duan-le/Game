@@ -12,7 +12,7 @@ class Engine {
 		static Engine* getInstance();
 		void init();
 		void events();
-		void update();
+		void update(float dt);
 		void render();
 		void clean();
 		void quit();
